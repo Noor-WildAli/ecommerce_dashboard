@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:ecommerce_dashboard/core/widgets/custom_buttom.dart';
 import 'package:ecommerce_dashboard/core/widgets/custom_text_field.dart';
+import 'package:ecommerce_dashboard/features/add_product/domain/entities/add_product_input_entity.dart';
 import 'package:ecommerce_dashboard/features/add_product/presentation/views/widgets/image_field.dart';
 import 'package:ecommerce_dashboard/features/add_product/presentation/views/widgets/is_featuered_chexk_box.dart';
 import 'package:flutter/material.dart';
@@ -105,6 +106,15 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   if (fileImage != null) {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
+                      AddProductInputEntity input = AddProductInputEntity(
+                        name: name!,
+                        code: code!,
+                        description: description!,
+                        price: price!,
+                        quantity: quantity!,
+                        isFeatured: isFeatured,
+                        image: fileImage!,
+                      );
                     }
                   } else {
                     showError(context);
